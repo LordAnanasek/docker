@@ -15,6 +15,7 @@ target
 **/lib
 **/src/main/generated
 **/node_modules/*
+/node_modules/
 .DS_Store
 target
 /.apt_generated/
