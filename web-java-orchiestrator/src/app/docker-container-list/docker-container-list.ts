@@ -4,8 +4,8 @@ import {ContainerInfoDto} from "../ContainerInfoDto";
 
 @Component({
   selector: 'app-docker-list',
-  templateUrl: './docker-list.component.html',
-  styleUrls: ['./docker-list.component.css']
+  templateUrl: './docker-container-list.html',
+  styleUrls: ['./docker-container-list.component.css']
 })
 export class DockerListComponent implements OnInit {
 

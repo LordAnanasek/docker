@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DockerListComponent} from "./docker-list/docker-list.component";
+import {DockerListComponent} from "./docker-container-list/docker-container-list";
 import {DockerDetailsComponent} from "./docker-details/docker-details.component";
 import {DockerImageListComponent} from "./docker-image-list/docker-image-list.component";
 import {DockerImageDetailsComponent} from "./docker-image-details/docker-image-details.component";

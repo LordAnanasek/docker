@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DockerListComponent } from './docker-list.component';
+import { DockerListComponent } from './docker-container-list';
 
 describe('DockerListComponent', () => {
   let component: DockerListComponent;
