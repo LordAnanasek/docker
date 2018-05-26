@@ -21,3 +21,4 @@ build
 node_modules
 /.apt_generated/
 /*.sh
+.mvn/

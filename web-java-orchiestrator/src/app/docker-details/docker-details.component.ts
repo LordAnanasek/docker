@@ -43,7 +43,10 @@ export class DockerDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.dockerListService.getContainerDetails(id)
       .subscribe(dockerDetails => this.dockerDetails = dockerDetails);
+  }
 
+  deleteDockerDetails(dockerDetails: DockerDetails): void{
+    this.dockerListService.deteleContainer(dockerDetails).subscribe();
   }
 
 

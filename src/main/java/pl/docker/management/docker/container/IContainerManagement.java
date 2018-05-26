@@ -9,4 +9,6 @@ public interface IContainerManagement {
     List<ContainerInfoDto> getList();
 
     InspectContainerResponse getDetailContainer(String containerId);
+
+    void deleteContainer(String containerId);
 }

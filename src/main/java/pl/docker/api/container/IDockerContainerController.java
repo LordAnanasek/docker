@@ -9,4 +9,5 @@ import java.util.List;
 public interface IDockerContainerController {
     List<ContainerInfoDto> getList();
     InspectContainerResponse getDetailContainer(String id);
+    void deleteContainer(String id);
 }

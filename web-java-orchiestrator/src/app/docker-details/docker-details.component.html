@@ -1,6 +1,18 @@
 <div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+
+      <h1 class="display-4">Detale kontenera</h1>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="goBack()" class="btn btn-primary">Back</button>
+        <button type="button" (click)="stopContainer(dockerDetails)" class="btn btn-warning">Stop</button>
+        <button type="button" (click)="deleteDockerDetails(dockerDetails)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
   <div *ngIf="dockerDetails">
     <h2>{{ dockerDetails.Name }} Details</h2>
+    <div><span><b>Id:</b> </span>{{dockerDetails.Id}}</div>
     <div><span><b>Data utworzenia:</b> </span>{{dockerDetails.Created}}</div>
     <div><span><b>Hostname: </b> </span>{{dockerDetails.Config.Hostname}}</div>
     <div><span><b>Obraz: </b> </span>{{dockerDetails.Config.Image}}</div>
@@ -130,12 +142,10 @@
             </div>
 
 
-
-
             <div>
 
             </div>
             <button (click)="goBack()">go back</button>
-            <button (click)="save()">save</button>
+            <button (click)="deleteDockerDetails(dockerDetails)">delte</button>
           </div>
         </div>

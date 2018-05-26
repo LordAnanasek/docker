@@ -12,20 +12,26 @@ import java.util.List;
 @RestController
 public class DockerContainerController implements IDockerContainerController {
 
+    private static final String ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin";
+
     @Autowired
     IContainerManagement dockerManagement;
 
-    @CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
+    @CrossOrigin(exposedHeaders = ACCESS_CONTROL_ALLOW_ORIGIN)
     @RequestMapping(value = "api/container/list", method = RequestMethod.GET)
     public List<ContainerInfoDto> getList() {
         return dockerManagement.getList();
     }
 
-    @CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
+    @CrossOrigin(exposedHeaders = ACCESS_CONTROL_ALLOW_ORIGIN)
     @RequestMapping(value = "api/container/{id}", method = RequestMethod.GET)
     public InspectContainerResponse getDetailContainer(@PathVariable String id) {
         return dockerManagement.getDetailContainer(id);
     }
 
-
+    @CrossOrigin(exposedHeaders = ACCESS_CONTROL_ALLOW_ORIGIN)
+    @RequestMapping(value= "api/container/{id}", method = RequestMethod.DELETE)
+    public void deleteContainer(@PathVariable String id){
+        dockerManagement.deleteContainer(id);
+    }
 }
