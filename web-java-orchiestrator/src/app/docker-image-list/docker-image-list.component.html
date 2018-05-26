@@ -1,0 +1,19 @@
+<!-- {{dockerImagesList | json}} -->
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name Image</th>
+        <th scope="col">Id Image</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let image of dockerImagesList"  routerLink="/detailImage/{{image.Id}}">
+      <td>{{image.RepoTags}}</td>
+      <td>{{image.Id}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

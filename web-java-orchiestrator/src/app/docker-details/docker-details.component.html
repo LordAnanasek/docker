@@ -1,0 +1,141 @@
+<div class="container">
+  <div *ngIf="dockerDetails">
+    <h2>{{ dockerDetails.Name }} Details</h2>
+    <div><span><b>Data utworzenia:</b> </span>{{dockerDetails.Created}}</div>
+    <div><span><b>Hostname: </b> </span>{{dockerDetails.Config.Hostname}}</div>
+    <div><span><b>Obraz: </b> </span>{{dockerDetails.Config.Image}}</div>
+    <div><span><b>User: </b> </span>{{dockerDetails.Config.User}}</div>
+    <div><span><b>Sterownik: </b></span>{{dockerDetails.Driver}}</div>
+    <div><span><b>HostnamePath: </b></span>{{dockerDetails.HostnamePath}}</div>
+    <div><span><b>HostPath: </b></span>{{dockerDetails.HostsPath}}</div>
+    <div><span><b>LogPath: </b></span>{{dockerDetails.LogPath}}</div>
+    <div><span><b>SizeRootFs: </b></span>{{dockerDetails.SizeRootFs}}</div>
+    <div><span><b>Image: </b></span>{{dockerDetails.Image}}</div>
+    <div><span><b>Image: </b></span>{{dockerDetails.RestartCount}}</div>
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">
+          Args
+        </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cmd of returnArray(dockerDetails.Args)">
+          <td>{{cmd}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+
+
+      <div>
+        <table class="table table-striped">
+          <thead>
+          <th scope="col">
+            Entrypoint
+          </th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let entrypoint of returnArray(dockerDetails.Config.Entrypoint)">
+            <td>{{entrypoint}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+
+        <div>
+          <table class="table table-striped">
+            <thead>
+            <th scope="col">
+              Env
+            </th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let env of returnArray(dockerDetails.Config.Env)">
+              <td>{{env}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+
+
+          <div>
+            <table class="table table-striped">
+              <thead>
+              <th scope="col">
+                ExposedPorts
+              </th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let env of getKeys(dockerDetails.Config.ExposedPorts)">
+                <td>{{env}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <div>
+              <table class="table table-striped">
+                <thead>
+                <th scope="col">
+                  Status
+                </th>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>oomkilled {{dockerDetails.State.oomkilled}}</td>
+                </tr>
+                <tr>
+                  <td>Status {{dockerDetails.State.Status}}</td>
+                </tr>
+                <tr>
+                  <td>Running {{dockerDetails.State.Running}}</td>
+                </tr>
+                <tr>
+                  <td>Paused {{dockerDetails.State.Paused}}</td>
+                </tr>
+                <tr>
+                  <td>Restarting {{dockerDetails.State.Restarting}}</td>
+                </tr>
+                <tr>
+                  <td>OOMKilled {{dockerDetails.State.OOMKilled}}</td>
+                </tr>
+                <tr>
+                  <td>Dead {{dockerDetails.State.Dead}}</td>
+                </tr>
+                <tr>
+                  <td>Pid {{dockerDetails.State.Pid}}</td>
+                </tr>
+                <tr>
+                  <td>ExitCode {{dockerDetails.State.ExitCode}}</td>
+                </tr>
+                <tr>
+                  <td>Error {{dockerDetails.State.Error}}</td>
+                </tr>
+                <tr>
+                  <td>StartedAt {{dockerDetails.State.StartedAt}}</td>
+                </tr>
+                <tr>
+                  <td>FinishedAt {{dockerDetails.State.FinishedAt}}</td>
+                </tr>
+                <tr>
+                  <td>Health {{dockerDetails.State.Health}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+
+
+            <div>
+
+            </div>
+            <button (click)="goBack()">go back</button>
+            <button (click)="save()">save</button>
+          </div>
+        </div>

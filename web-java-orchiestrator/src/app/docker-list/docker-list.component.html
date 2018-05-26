@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Container Name</th>
+      <th scope="col">Ports</th>
+      <th scope="col">Status</th>
+      <th scope="col">Network name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of containterInfoDto">
+      <td routerLink="/detail/{{user.id}}">{{user.name}}</td>
+      <td>{{user.ports}}</td>
+      <td>{{user.statusRun}}</td>
+      <td routerLink="/detailNetwork/{{user.networkName}}">{{user.networkName}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

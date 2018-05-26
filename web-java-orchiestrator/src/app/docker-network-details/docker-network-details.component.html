@@ -1,0 +1,48 @@
+
+<div class="container">
+  <div *ngIf="dockerNetworkDetails">
+    <h2>Details {{dockerNetworkDetails.Name}} Network</h2>
+    <p><span><b>Id: </b>{{dockerNetworkDetails.Id}}}</span></p>
+    <p><span><b>Scope: </b>{{dockerNetworkDetails.Scope}}</span></p>
+    <p><span><b>Driver: </b>{{dockerNetworkDetails.Driver}}</span></p>
+
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">IPAM:</th>
+        <p><span><b>Driver: </b>{{dockerNetworkDetails.IPAM.Driver}}</span></p>
+        </thead>
+        <tbody>
+        <tr *ngFor="let config of dockerNetworkDetails.IPAM.Config">
+          <td>Subnet: {{config.Subnet}} </td>
+          <td>IPRange: {{config.IPRange}} </td>
+          <td>Getway: {{config.Gateway}}</td>
+          <td>NetworkID: {{config.NetworkID}} </td>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col"><h3>Containers:</h3></th>
+
+        </thead>
+        <tbody>
+        <tr *ngFor="let container of getAsArray(dockerNetworkDetails.Containers)">
+          <p routerLink="/detail/{{container.key}}"><span><h4><b>Container: </b>{{container.key}}</h4></span></p>
+          <p><span><b>EndpointID: </b>{{container.value.EndpointID}}</span></p>
+          <p><span><b>IPv4Address: </b>{{container.value.IPv4Address}}</span></p>
+          <p><span><b>IPv6Address: </b>{{container.value.IPv6Address}}</span></p>
+          <p><span><b>MacAddress: </b>{{container.value.MacAddress}}</span></p>
+        </tbody>
+      </table>
+    </div>
+    <div>
+    </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>
+</div>

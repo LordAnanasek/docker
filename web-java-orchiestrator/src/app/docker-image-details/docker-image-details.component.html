@@ -1,0 +1,83 @@
+<p>
+  <!-- {{dockerImageDetails | json}} -->
+</p>
+<div class="container">
+  <div *ngIf="dockerImageDetails">
+
+    <h2>Details {{dockerImageDetails.Config.Image}}</h2>
+    <p><span><b>Czas stworzenia obrazu: </b>{{dockerImageDetails.Created}}</span></p>
+    <p><span><b>Rodzic obrazu: </b>{{dockerImageDetails.Parent}}}</span></p>
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">
+          Nazwa obrazu:
+        </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tag of dockerImageDetails.RepoTags">
+          <td>{{tag}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">
+          Zmienne środowiskowe:
+        </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let env of dockerImageDetails.Config.Env">
+          <td>{{env}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">
+          Eksponowane porty:
+        </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ep of getKeys(dockerImageDetails.Config.ExposedPorts)">
+          <td>{{ep}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">
+          Volumes:
+        </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ep of getKeys(dockerImageDetails.Config.Volumes)">
+          <td>{{ep}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <th scope="col">
+          Entrypoint:
+        </th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ep of dockerImageDetails.Config.Entrypoint">
+          <td>{{ep}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <button (click)="goBack()">go back</button>
+    <button (click)="save()">save</button>
+  </div>
+</div>
