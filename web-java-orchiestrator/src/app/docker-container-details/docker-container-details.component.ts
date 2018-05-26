@@ -6,10 +6,10 @@ import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-docker-details',
-  templateUrl: './docker-details.component.html',
-  styleUrls: ['./docker-details.component.css']
+  templateUrl: './docker-container-details.component.html',
+  styleUrls: ['./docker-container-details.component.css']
 })
-export class DockerDetailsComponent implements OnInit {
+export class DockerContainerDetailsComponent implements OnInit {
 
 //  @Input()
   dockerDetails: DockerDetails;
@@ -26,6 +26,11 @@ export class DockerDetailsComponent implements OnInit {
   returnArray(map){
     console.log(map);
     return map;
+  }
+
+
+  disabledStopButton(): boolean{
+    return !this.dockerDetails.State.Running;
   }
 
   constructor(

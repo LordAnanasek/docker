@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DockerListComponent } from './docker-container-list/docker-container-list';
 import { AppRoutingModule } from './/app-routing.module';
-import { DockerDetailsComponent } from './docker-details/docker-details.component';
+import { DockerContainerDetailsComponent } from './docker-container-details/docker-container-details.component';
 import { DockerImageListComponent } from './docker-image-list/docker-image-list.component';
 import { DockerImageDetailsComponent } from './docker-image-details/docker-image-details.component';
 import { DockerNetworkDetailsComponent } from './docker-network-details/docker-network-details.component';
@@ -19,7 +19,7 @@ import { DockerNetworkDetailsComponent } from './docker-network-details/docker-n
     AppComponent,
     DashboardComponent,
     DockerListComponent,
-    DockerDetailsComponent,
+    DockerContainerDetailsComponent,
     DockerImageListComponent,
     DockerImageDetailsComponent,
     DockerNetworkDetailsComponent
