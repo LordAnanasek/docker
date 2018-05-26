@@ -12,9 +12,12 @@
 ---
 
 1. Backend:
-⋅⋅ mvn spring-boot:run
-
+```
+mvn spring-boot:run
+```
 ---
 2. Frontend (in catalog web-java-orchiestrator): 
-⋅⋅ npm install
-⋅⋅ ng serve --open
+```
+npm install
+ng serve --open
+```
