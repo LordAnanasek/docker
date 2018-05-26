@@ -17,6 +17,7 @@ target
 **/node_modules/*
 /node_modules/
 .DS_Store
-target
+/target
+node_modules
 /.apt_generated/
 /*.sh
