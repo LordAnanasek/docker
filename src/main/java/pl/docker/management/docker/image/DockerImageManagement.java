@@ -30,4 +30,9 @@ public class DockerImageManagement implements IDockerImageManagement {
         return inspectImageResponse;
     }
 
+    @Override
+    public void deleteImage(String imageId) {
+        dockerInstance.getDockerClient().removeImageCmd(imageId).exec();
+    }
+
 }

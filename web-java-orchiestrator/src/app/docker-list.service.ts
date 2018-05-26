@@ -4,7 +4,6 @@ import {ContainerInfoDto} from "./ContainerInfoDto";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
 import {DockerDetails} from "./dto/docker/details/DockerDetails";
-import {of} from "rxjs/internal/observable/of";
 import {MessageInfoService} from "./message-info.service";
 import {HandleErrorService} from "./handle-error.service";
 
@@ -17,9 +16,9 @@ export class DockerListService {
   private detailsUrl = 'http://localhost:8085/api/container/';
 
   constructor(private http: HttpClient,
-              private messageInfoService :MessageInfoService,
-              private handleErrorService :HandleErrorService
-              ) {
+              private messageInfoService: MessageInfoService,
+              private handleErrorService: HandleErrorService
+  ) {
   }
 
   getContainerInfoDto(): Observable<ContainerInfoDto[]> {
@@ -35,14 +34,23 @@ export class DockerListService {
       );
   }
 
-  deteleContainer(dockerDetails : DockerDetails): Observable<DockerDetails> {
-    console.log("usuwam"+dockerDetails.Id);
+  deteleContainer(dockerDetails: DockerDetails): Observable<DockerDetails> {
     let id = dockerDetails.Id;
     let url = `${this.detailsUrl}/${id}`;
-    console.log("url "+ url);
+
     return this.http.delete<DockerDetails>(url).pipe(
       tap(_ => this.messageInfoService.log(`deleted container id=${id}`)),
       catchError(this.handleErrorService.handleError<DockerDetails>('deleteContainer'))
+    );
+  }
+
+  stopContainer(dockerDetails: DockerDetails): Observable<any> {
+    let id = dockerDetails.Id;
+    let url = `${this.detailsUrl}/${id}`;
+
+    return this.http.put(url, dockerDetails).pipe(
+      tap(_ => this.messageInfoService.log(`stop container id=${id}`)),
+      catchError(this.handleErrorService.handleError<DockerDetails>('stopContainer'))
     );
   }
 

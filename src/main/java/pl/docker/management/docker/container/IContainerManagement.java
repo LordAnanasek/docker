@@ -11,4 +11,6 @@ public interface IContainerManagement {
     InspectContainerResponse getDetailContainer(String containerId);
 
     void deleteContainer(String containerId);
+
+    void stopContainer(String containerId);
 }

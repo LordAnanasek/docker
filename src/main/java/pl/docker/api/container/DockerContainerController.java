@@ -34,4 +34,11 @@ public class DockerContainerController implements IDockerContainerController {
     public void deleteContainer(@PathVariable String id){
         dockerManagement.deleteContainer(id);
     }
+
+    @CrossOrigin(exposedHeaders = ACCESS_CONTROL_ALLOW_ORIGIN)
+    @RequestMapping(value = "api/container/{id}", method = RequestMethod.PUT)
+    @Override
+    public void stopContainer(@PathVariable String id) {
+        dockerManagement.stopContainer(id);
+    }
 }

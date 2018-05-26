@@ -46,7 +46,11 @@ export class DockerDetailsComponent implements OnInit {
   }
 
   deleteDockerDetails(dockerDetails: DockerDetails): void{
-    this.dockerListService.deteleContainer(dockerDetails).subscribe();
+    this.dockerListService.deteleContainer(dockerDetails).subscribe(()=> this.goBack());
+  }
+
+  stopContainer(dockerDetails: DockerDetails): void{
+    this.dockerListService.stopContainer(dockerDetails).subscribe();
   }
 
 

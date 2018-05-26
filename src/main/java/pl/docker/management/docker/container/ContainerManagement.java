@@ -71,7 +71,11 @@ public class ContainerManagement implements IContainerManagement {
 
     @Override
     public void deleteContainer(String containerId){
-        iDockerInstance.getDockerClient().stopContainerCmd(containerId);
         iDockerInstance.getDockerClient().removeContainerCmd(containerId).withForce(true).exec();
+    }
+
+    @Override
+    public void stopContainer(String containerId){
+        iDockerInstance.getDockerClient().stopContainerCmd(containerId).exec();
     }
 }

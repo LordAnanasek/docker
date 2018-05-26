@@ -29,4 +29,11 @@ public class DockerImageController implements IDockerImageController {
         return dockerImageManagement.getDockerImagesDetails(id);
     }
 
+    @Override
+    public void deleteImage(@PathVariable String id) {
+        dockerImageManagement.deleteImage(id);
+    }
+
+
+
 }

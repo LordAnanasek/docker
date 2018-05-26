@@ -10,4 +10,6 @@ public interface IDockerImageManagement {
     List<Image> getAllDockerImages();
 
     InspectImageResponse getDockerImagesDetails(String imageId);
+
+    void deleteImage(String imageId);
 }

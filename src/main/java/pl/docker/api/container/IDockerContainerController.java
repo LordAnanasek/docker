@@ -10,4 +10,5 @@ public interface IDockerContainerController {
     List<ContainerInfoDto> getList();
     InspectContainerResponse getDetailContainer(String id);
     void deleteContainer(String id);
+    void stopContainer(String id);
 }

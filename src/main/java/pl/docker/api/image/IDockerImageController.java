@@ -19,4 +19,8 @@ public interface IDockerImageController {
     @CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
     @RequestMapping(value = "api/images/{id}", method = RequestMethod.GET)
     InspectImageResponse getDetailContainer(@PathVariable String id);
+
+    @CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
+    @RequestMapping(value = "api/images/{id}", method = RequestMethod.DELETE)
+    void deleteImage(String id);
 }

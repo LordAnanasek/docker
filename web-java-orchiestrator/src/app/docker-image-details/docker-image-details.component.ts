@@ -13,9 +13,9 @@ export class DockerImageDetailsComponent implements OnInit {
 
   dockerImageDetails: DockerImageDetails;
 
-  getKeys(map): Array<string>{
+  getKeys(map): Array<string> {
     let array1 = new Array<string>()
-    for(let k in map){
+    for (let k in map) {
 
       array1.push(k);
     }
@@ -39,6 +39,9 @@ export class DockerImageDetailsComponent implements OnInit {
     this.dockerImageService.getDockerImageDetails(id).subscribe(dockerImageDetails => this.dockerImageDetails = dockerImageDetails);
   }
 
+  deleteImage(dockerImageDetails: DockerImageDetails) {
+    this.dockerImageService.deleteImage(dockerImageDetails).subscribe(() => this.goBack());
+  }
 
   goBack(): void {
     this.location.back();

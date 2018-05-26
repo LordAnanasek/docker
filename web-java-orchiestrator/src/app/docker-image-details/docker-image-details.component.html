@@ -1,12 +1,17 @@
-<p>
-  <!-- {{dockerImageDetails | json}} -->
-</p>
 <div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Detale obrazu</h1>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="goBack()" class="btn btn-primary">Back</button>
+        <button type="button" (click)="deleteImage(dockerImageDetails)" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
   <div *ngIf="dockerImageDetails">
-
     <h2>Details {{dockerImageDetails.Config.Image}}</h2>
     <p><span><b>Czas stworzenia obrazu: </b>{{dockerImageDetails.Created}}</span></p>
-    <p><span><b>Rodzic obrazu: </b>{{dockerImageDetails.Parent}}}</span></p>
+    <p><span><b>Rodzic obrazu: </b>{{dockerImageDetails.Parent}}</span></p>
     <div>
       <table class="table table-striped">
         <thead>
