@@ -1,4 +1,12 @@
 <div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Lista kontenerów</h1>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="goBack()" class="btn btn-primary">Back</button>
+        </div>
+    </div>
+  </div>
   <table class="table">
     <thead>
     <tr>
@@ -9,11 +17,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of containterInfoDto">
-      <td routerLink="/detail/{{user.id}}">{{user.name}}</td>
-      <td>{{user.ports}}</td>
-      <td>{{user.statusRun}}</td>
-      <td routerLink="/detailNetwork/{{user.networkName}}">{{user.networkName}}</td>
+    <tr *ngFor="let container of containterInfoDto">
+      <td routerLink="/detail/{{container.id}}">{{container.name}}</td>
+      <td>{{container.ports}}</td>
+      <td>{{container.statusRun}}</td>
+      <td routerLink="/detailNetwork/{{container.networkName}}">{{container.networkName}}</td>
     </tr>
     </tbody>
   </table>
