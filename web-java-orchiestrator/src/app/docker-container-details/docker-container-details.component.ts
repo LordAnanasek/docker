@@ -30,7 +30,7 @@ export class DockerContainerDetailsComponent implements OnInit {
 
 
   disabledStopButton(): boolean{
-    return !this.dockerDetails.State.Running;
+      return !this.dockerDetails.State.Running;
   }
 
   constructor(

@@ -17,8 +17,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let container of containterInfoDto">
-      <td routerLink="/detail/{{container.id}}">{{container.name}}</td>
+    <tr *ngFor="let container of containterInfoDtoArray">
+      <td routerLink="/detail/{{container.id}}">{{container.name}} <span class="badge badge-pill badge-{{getKindBagde(container)}}">{{getStatusForBadges(container)}}</span></td>
       <td>{{container.ports}}</td>
       <td>{{container.statusRun}}</td>
       <td routerLink="/detailNetwork/{{container.networkName}}">{{container.networkName}}</td>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DockerListService} from "../docker-list.service";
 import {ContainerInfoDto} from "../ContainerInfoDto";
 import {Location} from "@angular/common";
+import {EnumModule} from "../constants/EnumModule"
 
 @Component({
   selector: 'app-docker-list',
@@ -10,24 +11,44 @@ import {Location} from "@angular/common";
 })
 export class DockerListComponent implements OnInit {
 
-  containterInfoDto : ContainerInfoDto[];
+  containterInfoDtoArray: ContainerInfoDto[];
+  containerInfoDto: ContainerInfoDto;
 
-  constructor(private dockerListService : DockerListService,
+
+  constructor(private dockerListService: DockerListService,
               private location: Location
-              ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getContainerInfoDto();
   }
 
-  getContainerInfoDto(): void{
-    this.dockerListService.getContainerInfoDto().subscribe(containterInfoDto => this.containterInfoDto = containterInfoDto);
+  getContainerInfoDto(): void {
+    this.dockerListService.getContainerInfoDto().subscribe(containterInfoDto => this.containterInfoDtoArray = containterInfoDto);
 
   }
 
-
   goBack(): void {
     this.location.back();
+  }
+
+  getStatusForBadges(container: ContainerInfoDto): string {
+    if (container.statusRun.includes(EnumModule.StateEnum.UP)) {
+      return "Running"
+    } else if (container.statusRun.includes(EnumModule.StateEnum.EXITED)){
+      return 'Exited';
+    }
+    return '';
+  }
+
+  getKindBagde(container: ContainerInfoDto): string {
+    if (container.statusRun.includes(EnumModule.StateEnum.UP)) {
+      return "success"
+    } else if (container.statusRun.includes(EnumModule.StateEnum.EXITED)){
+      return 'danger';
+    }
+    return 'warning';
   }
 
 }
