@@ -22,3 +22,4 @@ node_modules
 /.apt_generated/
 /*.sh
 .mvn/
+package-lock.json
