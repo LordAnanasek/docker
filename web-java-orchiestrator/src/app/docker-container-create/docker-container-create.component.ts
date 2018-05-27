@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DockerContainerCreate} from "../dto/docker/container/create/DockerContainerCreate";
 import {DockerListService} from "../docker-list.service";
 import {Location} from "@angular/common";
 import {DockerNetworkService} from "../docker-network.service";
+import {DockerNetwork} from "../dto/docker/network/DockerNetwork";
 
 @Component({
   selector: 'app-docker-container-create',
@@ -11,17 +12,22 @@ import {DockerNetworkService} from "../docker-network.service";
 })
 export class DockerContainerCreateComponent implements OnInit {
 
-  dockerContainerCreate :DockerContainerCreate = new DockerContainerCreate();
+  dockerContainerCreate: DockerContainerCreate = new DockerContainerCreate();
+  dockerNetworkList: DockerNetwork[];
+
 
   constructor(
-    private dockerListService :DockerListService,
-    private dockerNetworkService :DockerNetworkService,
-    private location : Location,
-  ) { }
+    private dockerListService: DockerListService,
+    private dockerNetworkService: DockerNetworkService,
+    private location: Location,
+  ) {
+  }
 
   ngOnInit() {
-   // this.dockerContainerCreate.envList.push({value: ''});
-   // this.dockerContainerCreate.portList.push({value: ''});
+    // this.dockerContainerCreate.envList.push({value: ''});
+    // this.dockerContainerCreate.portList.push({value: ''});
+    this.availableNetwork();
+    console.log(this.dockerNetworkList);
   }
 
   addEnv() {
@@ -34,18 +40,23 @@ export class DockerContainerCreateComponent implements OnInit {
     this.dockerContainerCreate.portList.push({value: ''})
   }
 
-  addContainer(){
+  addContainer() {
     console.log(this.dockerContainerCreate);
     this.dockerListService.runContainer(this.dockerContainerCreate).subscribe();
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 
-  availableNetwork():void {
-   // this.dockerNetworkService.
 
+  availableNetwork() {
+    return this.dockerNetworkService.getDockerNetworkList().subscribe(dockerNetworkList => this.dockerNetworkList = dockerNetworkList);
+    // this.dockerNetworkService.
+  }
+
+  getAvailableNetwork(): DockerNetwork[] {
+    return this.dockerNetworkList;
   }
 
 }

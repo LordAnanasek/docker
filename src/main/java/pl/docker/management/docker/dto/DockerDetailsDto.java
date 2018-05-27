@@ -11,5 +11,6 @@ public class DockerDetailsDto {
     private String created;
     private String driver;
     private String image;
+    private String network;
     private List<String> envList = new ArrayList<>();
 }

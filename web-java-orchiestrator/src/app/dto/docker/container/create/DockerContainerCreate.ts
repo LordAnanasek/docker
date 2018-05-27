@@ -7,6 +7,7 @@ export class DockerContainerCreate {
   containerName: string;
   envList: Array<ValueEnv>;
   portList: Array<Port>;
+  network: string;
 
   constructor() {
     this.envList = new Array<ValueEnv>();
