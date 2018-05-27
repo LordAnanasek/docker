@@ -6,10 +6,12 @@ import {DockerImageListComponent} from "./docker-image-list/docker-image-list.co
 import {DockerImageDetailsComponent} from "./docker-image-details/docker-image-details.component";
 import {DockerNetworkDetailsComponent} from "./docker-network-details/docker-network-details.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {DockerContainerCreateComponent} from "./docker-container-create/docker-container-create.component";
 
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
+  {path: 'container/create', component: DockerContainerCreateComponent},
   {path: 'container', component: DockerListComponent},
   {path: 'images', component: DockerImageListComponent},
   {path: 'detail/:id', component: DockerContainerDetailsComponent},

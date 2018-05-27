@@ -6,12 +6,14 @@ import {Observable} from "rxjs/internal/Observable";
 import {DockerDetails} from "./dto/docker/details/DockerDetails";
 import {MessageInfoService} from "./message-info.service";
 import {HandleErrorService} from "./handle-error.service";
+import {DockerContainerCreate} from "./dto/docker/container/create/DockerContainerCreate";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DockerListService {
+  private createUrl = 'http://localhost:8085/api/container/';
   private apiUrl = 'http://localhost:8085/api/container/list';
   private detailsUrl = 'http://localhost:8085/api/container/';
 
@@ -51,6 +53,13 @@ export class DockerListService {
     return this.http.put(url, dockerDetails).pipe(
       tap(_ => this.messageInfoService.log(`stop container id=${id}`)),
       catchError(this.handleErrorService.handleError<DockerDetails>('stopContainer'))
+    );
+  }
+
+  runContainer(dockerContainerCreate :DockerContainerCreate): Observable<any>{
+    return this.http.post(this.createUrl, dockerContainerCreate).pipe(
+      tap(_ => this.messageInfoService.log('run container')),
+      catchError(this.handleErrorService.handleError<DockerContainerCreate>('runContainer'))
     );
   }
 

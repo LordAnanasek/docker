@@ -8,6 +8,7 @@
       </div>
     </div>
   </div>
+  {{ dockerImageDetails | json}}
   <div *ngIf="dockerImageDetails">
     <h2>Details {{dockerImageDetails.Config.Image}}</h2>
     <p><span><b>Czas stworzenia obrazu: </b>{{dockerImageDetails.Created}}</span></p>

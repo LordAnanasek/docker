@@ -1,10 +1,12 @@
 package pl.docker.api.container;
 
 import com.github.dockerjava.api.command.InspectContainerResponse;
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.docker.management.docker.container.IContainerManagement;
 import pl.docker.management.docker.dto.ContainerInfoDto;
+import pl.docker.management.docker.dto.DockerContainerCreateDto;
 import pl.docker.management.docker.dto.DockerDetailsDto;
 
 import java.util.List;
@@ -40,5 +42,12 @@ public class DockerContainerController implements IDockerContainerController {
     @Override
     public void stopContainer(@PathVariable String id) {
         dockerManagement.stopContainer(id);
+    }
+
+    @CrossOrigin(exposedHeaders = ACCESS_CONTROL_ALLOW_ORIGIN)
+    @RequestMapping(value = "api/container", method = RequestMethod.POST)
+    @Override
+    public void runContainer(@RequestBody DockerContainerCreateDto dockerContainerCreateDto){
+        dockerManagement.runContainer(dockerContainerCreateDto);
     }
 }

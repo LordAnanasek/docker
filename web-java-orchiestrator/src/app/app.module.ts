@@ -12,6 +12,7 @@ import { DockerContainerDetailsComponent } from './docker-container-details/dock
 import { DockerImageListComponent } from './docker-image-list/docker-image-list.component';
 import { DockerImageDetailsComponent } from './docker-image-details/docker-image-details.component';
 import { DockerNetworkDetailsComponent } from './docker-network-details/docker-network-details.component';
+import { DockerContainerCreateComponent } from './docker-container-create/docker-container-create.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DockerNetworkDetailsComponent } from './docker-network-details/docker-n
     DockerContainerDetailsComponent,
     DockerImageListComponent,
     DockerImageDetailsComponent,
-    DockerNetworkDetailsComponent
+    DockerNetworkDetailsComponent,
+    DockerContainerCreateComponent
   ],
   imports: [
 //    NgbModule.forRoot(),

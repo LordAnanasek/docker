@@ -5,6 +5,7 @@ import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.ContainerPort;
 import org.springframework.stereotype.Service;
 import pl.docker.management.docker.dto.ContainerInfoDto;
+import pl.docker.management.docker.dto.DockerContainerCreateDto;
 import pl.docker.management.docker.dto.DockerDetailsDto;
 import pl.docker.management.docker.instance.IDockerInstance;
 
@@ -77,5 +78,18 @@ public class ContainerManagement implements IContainerManagement {
     @Override
     public void stopContainer(String containerId){
         iDockerInstance.getDockerClient().stopContainerCmd(containerId).exec();
+    }
+
+//    @Override
+//    public void test(){
+//        iDockerInstance.getDockerClient().createContainerCmd("busybox").withEnv
+//    }
+
+    @Override
+    public void runContainer(DockerContainerCreateDto dockerContainerCreateDto){
+        iDockerInstance.getDockerClient()
+                .createContainerCmd(dockerContainerCreateDto.getNameImage())
+                .withName(dockerContainerCreateDto.getContainerName())
+                .exec();
     }
 }

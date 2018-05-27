@@ -1,0 +1,147 @@
+
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Uruchamianie kontenera</h1>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="goBack()" class="btn btn-primary">Cofnij</button>
+      </div>
+    </div>
+  </div>
+  <form #formRef="ngForm">
+    <div class="form-group">
+      <label for="text">Nazwa obrazu</label>
+      <input [(ngModel)]="dockerContainerCreate.nameImage" name="dockerContainerCreate.nameImage" type="text"
+             class="form-control" id="nameImage" placeholder="image name">
+    </div>
+    <div class="form-group">
+      <label for="containerName">Nazwa kontenera</label>
+      <input [(ngModel)]="dockerContainerCreate.containerName" name="dockerContainerCreate.containerName" type="text"
+             class="form-control" id="containerName" placeholder="container name">
+    </div>
+
+    <div class="container">
+      <div *ngFor="let word2 of dockerContainerCreate.envList; let in=index" class="col-sm-3">
+        <div class="form-group">
+          <label for="name{{in}}">{{in+1}}. Zmienna środowiskowa:</label>
+          <input type="text" [(ngModel)]="dockerContainerCreate.envList[in].value" name="name{{in}}"
+                 class="form-control" #name="ngModel" required/>
+          <!--<p [hidden]="envArray[in].value">Field is required</p>
+          {{formRef.form.name1}}-->
+        </div>
+        <br/>
+      </div>
+      <button class="btn btn-primary btn-sm" id="env" (click)="addEnv()">Dodaj zmienną środowiskową</button>
+    </div>
+    <br/>
+    <div class="container">
+      <div *ngFor="let port of dockerContainerCreate.portList; let in=index" class="col-sm-3">
+        <div class="form-group">
+          <label for="name{{in}}">{{in+1}}. Porty:</label>
+          <input type="text" [(ngModel)]="dockerContainerCreate.portList[in].value" name="name{{in}}"
+                 class="form-control"
+                 #name="ngModel" required/>
+          <!--<p [hidden]="envArray[in].value">Field is required</p>
+          {{formRef.form.name1}}-->
+        </div>
+        <br/>
+      </div>
+      <button class="btn btn-primary btn-sm" id="port" (click)="addPort()">Dodaj porty</button>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="selectNetwork">Wybierz sieć</label>
+      <select class="form-control" name="selectNetwork" id="selectNetwork" >
+        <option *ngFor="let oo of dockerContainerCreate.envList" [value]="oo.value">{{oo.value}}</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" (click)="addContainer()">Submit</button>
+    <!-- [disabled]="!formRef.form.valid" -->
+  </form>
+  <br/>
+  <br/>
+  {{envArray | json}}
+  <br/>
+  <br/>
+
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+             placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+      <label for="exampleSelect1">Example select</label>
+      <select class="form-control" id="exampleSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleSelect2">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea">Example textarea</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above
+        input. It's a bit lighter and easily wraps to a new line.
+      </small>
+    </div>
+    <fieldset class="form-group">
+      <legend>Radio buttons</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+          Option one is this and that&mdash;be sure to include why it's great
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+          Option two can be something else and selecting it will deselect option one
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3"
+                 disabled>
+          Option three is disabled
+        </label>
+      </div>
+    </fieldset>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Check me out
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
