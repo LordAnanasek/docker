@@ -12,5 +12,6 @@ public interface IDockerContainerController {
     InspectContainerResponse getDetailContainer(String id);
     void deleteContainer(String id);
     void stopContainer(String id);
-    void runContainer(DockerContainerCreateDto dockerContainerCreateDto);
+    void createAndRunContainer(DockerContainerCreateDto dockerContainerCreateDto);
+    void runContainer(String id);
 }

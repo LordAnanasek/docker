@@ -21,10 +21,10 @@
     </div>
 
     <div class="container">
-      <div *ngFor="let word2 of dockerContainerCreate.envList; let in=index" class="col-sm-3">
+      <div *ngFor="let env of dockerContainerCreate.envList; let in=index" class="col-sm-3">
         <div class="form-group">
-          <label for="name{{in}}">{{in+1}}. Zmienna środowiskowa:</label>
-          <input type="text" [(ngModel)]="dockerContainerCreate.envList[in].value" name="name{{in}}"
+          <label for="env{{in}}">{{in+1}}. Zmienna środowiskowa:</label>
+          <input type="text" [(ngModel)]="dockerContainerCreate.envList[in].value" name="env{{in}}"
                  class="form-control" #name="ngModel" required/>
           <!--<p [hidden]="envArray[in].value">Field is required</p>
           {{formRef.form.name1}}-->
@@ -37,8 +37,8 @@
     <div class="container">
       <div *ngFor="let port of dockerContainerCreate.portList; let in=index" class="col-sm-3">
         <div class="form-group">
-          <label for="name{{in}}">{{in+1}}. Porty:</label>
-          <input type="text" [(ngModel)]="dockerContainerCreate.portList[in].value" name="name{{in}}"
+          <label for="port{{in}}">{{in+1}}. Porty:</label>
+          <input type="text" [(ngModel)]="dockerContainerCreate.portList[in].value" name="port{{in}}"
                  class="form-control"
                  #name="ngModel" required/>
           <!--<p [hidden]="envArray[in].value">Field is required</p>
@@ -46,7 +46,8 @@
         </div>
         <br/>
       </div>
-      <button class="btn btn-primary btn-sm" id="port" (click)="addPort()">Dodaj porty</button>
+      <button class="btn btn-primary btn-sm" id="addport" (click)="addPort()">Dodaj porty</button>
+      <button class="btn btn-primary btn-sm" id="deleteport" (click)="deletePort()">Usuń przycisk porty</button>
     </div>
     <br/>
     <div class="form-group">

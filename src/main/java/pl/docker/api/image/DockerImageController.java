@@ -5,17 +5,17 @@ import com.github.dockerjava.api.model.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import pl.docker.management.docker.image.IDockerImageManagement;
+import pl.docker.management.docker.image.IImageManagement;
 
 import java.util.List;
 
 @RestController
 public class DockerImageController implements IDockerImageController {
 
-    private IDockerImageManagement dockerImageManagement;
+    private IImageManagement dockerImageManagement;
 
     @Autowired
-    public DockerImageController(IDockerImageManagement dockerImageManagement) {
+    public DockerImageController(IImageManagement dockerImageManagement) {
         this.dockerImageManagement = dockerImageManagement;
     }
 

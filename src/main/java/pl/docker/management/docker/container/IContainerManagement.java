@@ -16,5 +16,8 @@ public interface IContainerManagement {
 
     void stopContainer(String containerId);
 
-    void runContainer(DockerContainerCreateDto dockerContainerCreateDto);
+    void createAndRunContainer(DockerContainerCreateDto dockerContainerCreateDto);
+
+    void runContainer(String containerId);
+
 }

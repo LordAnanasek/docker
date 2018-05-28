@@ -3,6 +3,10 @@ import {DockerListService} from "../docker-list.service";
 import {DockerDetails} from "../dto/docker/details/DockerDetails";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from '@angular/common';
+import {Subscription} from "rxjs/internal/Subscription";
+import {DockerContainerCreate} from "../dto/docker/container/create/DockerContainerCreate";
+
+
 
 @Component({
   selector: 'app-docker-details',
@@ -41,6 +45,7 @@ export class DockerContainerDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.getDockerDetails();
   }
 
@@ -58,6 +63,9 @@ export class DockerContainerDetailsComponent implements OnInit {
     this.dockerListService.stopContainer(dockerDetails).subscribe();
   }
 
+  runContainer(dockerDetails: DockerDetails): void{
+    this.dockerListService.runContainer(dockerDetails.Id).subscribe();
+  }
 
   goBack(): void {
     this.location.back();

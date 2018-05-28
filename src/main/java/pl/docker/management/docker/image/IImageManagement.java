@@ -5,7 +5,7 @@ import com.github.dockerjava.api.model.Image;
 
 import java.util.List;
 
-public interface IDockerImageManagement {
+public interface IImageManagement {
 
     List<Image> getAllDockerImages();
 

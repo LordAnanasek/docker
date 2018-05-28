@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface IDockerInstance {
 
-    default DockerClient getDockerClient(){
-        return DockerClientBuilder.getInstance().build();
-    }
+    DockerClient getDockerClient();
+    void setUpConfigDockerclient();
 }

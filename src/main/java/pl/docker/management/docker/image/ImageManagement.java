@@ -9,12 +9,12 @@ import pl.docker.management.docker.instance.IDockerInstance;
 import java.util.List;
 
 @Service
-public class DockerImageManagement implements IDockerImageManagement {
+public class ImageManagement implements IImageManagement {
 
     private IDockerInstance dockerInstance;
 
     @Autowired
-    public DockerImageManagement(IDockerInstance iDockerInstance) {
+    public ImageManagement(IDockerInstance iDockerInstance) {
         this.dockerInstance = iDockerInstance;
     }
 

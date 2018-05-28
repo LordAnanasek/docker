@@ -56,10 +56,18 @@ export class DockerListService {
     );
   }
 
-  runContainer(dockerContainerCreate :DockerContainerCreate): Observable<any>{
+  createAndRunContainer(dockerContainerCreate :DockerContainerCreate): Observable<any>{
     return this.http.post(this.createUrl, dockerContainerCreate).pipe(
-      tap(_ => this.messageInfoService.log('run container')),
-      catchError(this.handleErrorService.handleError<DockerContainerCreate>('runContainer'))
+      tap(_ => this.messageInfoService.log('create and run container')),
+      catchError(this.handleErrorService.handleError<DockerContainerCreate>('createAndRunContainer'))
+    );
+  }
+
+  runContainer(id:string) : Observable<any>{
+    let url = `${this.detailsUrl}/${id}`;
+    return this.http.options(url).pipe(
+      tap(_ => this.messageInfoService.log('stop container id=${id}')),
+        catchError(this.handleErrorService.handleError('runContainer'))
     );
   }
 

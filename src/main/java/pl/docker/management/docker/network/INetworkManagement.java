@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface INetworkManagement {
     Network getNetworkDetails(String networkId);
+
     List<Network> getNetworkList();
 }

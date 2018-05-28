@@ -4,7 +4,8 @@
       <h1 class="display-4">Detale kontenera</h1>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" (click)="goBack()" class="btn btn-primary">Back</button>
-        <div *ngIf="dockerDetails"><button type="button" (click)="stopContainer(dockerDetails)" [disabled]=disabledStopButton() class="btn btn-warning">Stop</button></div>
+        <div *ngIf="dockerDetails"><button type="button" (click)="stopContainer(dockerDetails)" [disabled]=disabledStopButton() class="btn btn-warning">Stop</button>
+          <button type="button" (click)="runContainer(dockerDetails)" class="btn btn-success">Start</button></div>
         <button type="button" (click)="deleteDockerDetails(dockerDetails)" class="btn btn-danger">Delete</button>
       </div>
     </div>

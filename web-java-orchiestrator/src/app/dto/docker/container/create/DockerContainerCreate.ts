@@ -3,6 +3,7 @@ import {Port} from "./Port";
 
 
 export class DockerContainerCreate {
+  Id :string;
   nameImage: string;
   containerName: string;
   envList: Array<ValueEnv>;

@@ -40,9 +40,16 @@ export class DockerContainerCreateComponent implements OnInit {
     this.dockerContainerCreate.portList.push({value: ''})
   }
 
+  deletePort() {
+    this.dockerContainerCreate.portList.forEach((item, index) => {
+      if(item.value == ''){
+        this.dockerContainerCreate.portList.splice(index,1);
+      }
+    });
+  }
+
   addContainer() {
-    console.log(this.dockerContainerCreate);
-    this.dockerListService.runContainer(this.dockerContainerCreate).subscribe();
+    this.dockerListService.createAndRunContainer(this.dockerContainerCreate).subscribe();
   }
 
   goBack() {
