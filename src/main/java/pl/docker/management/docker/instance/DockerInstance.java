@@ -13,7 +13,7 @@ public class DockerInstance implements IDockerInstance {
     @PostConstruct
     void defaultSetup(){
         this.dockerClient = DockerClientBuilder.getInstance().build();
-        setUpConfigDockerclient();
+        //setUpConfigDockerclient();
     }
 
     @Override
