@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 public interface IDockerInstance {
 
     DockerClient getDockerClient();
-    void setUpConfigDockerclient();
+    void setUpConfigDockerclient(String host);
 }

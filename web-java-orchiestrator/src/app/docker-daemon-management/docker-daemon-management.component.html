@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Uruchamianie kontenera</h1>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" (click)="goBack()" class="btn btn-primary">Cofnij</button>
+      </div>
+    </div>
+  </div>
+  <form #formRef="ngForm">
+    <div class="form-group">
+      <label for="host">Nazwa obrazu</label>
+      <input [(ngModel)]="host" name="host" type="text"
+             class="form-control" id="host" placeholder="example: tcp://localhost">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="setDockerDaemon()">Submit</button>
+    <!-- [disabled]="!formRef.form.valid" -->
+  </form>
+  <br/>
+  <br/>
+
+  <br/>
+  <br/>
+</div>

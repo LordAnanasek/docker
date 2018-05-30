@@ -7,10 +7,12 @@ import {DockerImageDetailsComponent} from "./docker-image-details/docker-image-d
 import {DockerNetworkDetailsComponent} from "./docker-network-details/docker-network-details.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {DockerContainerCreateComponent} from "./docker-container-create/docker-container-create.component";
+import {DockerDaemonManagementComponent} from "./docker-daemon-management/docker-daemon-management.component";
 
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
+  {path: 'instance', component: DockerDaemonManagementComponent},
   {path: 'container/create', component: DockerContainerCreateComponent},
   {path: 'container', component: DockerListComponent},
   {path: 'images', component: DockerImageListComponent},
